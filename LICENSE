@@ -1,0 +1,31 @@
+ElectroSim-DunnECASA Suite
+Copyright (c) 2026 Rajeev Kumar. All rights reserved.
+
+This software ("the Software") is distributed in binary form only.
+
+No license is granted, express or implied, to:
+  - Use, copy, modify, merge, publish, sublicense, or sell the source code
+    of the Software.
+  - Reverse-engineer, decompile, or disassemble the binary distributions
+    except as permitted by applicable law that overrides this restriction.
+
+The following uses are permitted:
+
+  1. Personal use of the binary distribution.
+  2. Academic and non-commercial research use of the binary distribution,
+     provided that any publication, presentation, or derived work that uses
+     results produced by the Software cites the Software per CITATION.cff.
+  3. Redistribution of the unmodified binary distribution (the official
+     release zip downloaded from GitHub Releases) is permitted for academic
+     and personal use, provided this LICENSE file is included unaltered.
+
+All other uses, including but not limited to commercial use, redistribution
+of modified binaries, and inclusion in derivative works, require prior
+written permission from the author at rkumar@nccu.edu.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

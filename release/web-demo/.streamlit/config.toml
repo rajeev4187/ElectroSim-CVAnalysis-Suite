@@ -1,0 +1,21 @@
+# Streamlit configuration for the ElectroSim-DunnECASA Suite web demo.
+# Streamlit Community Cloud picks this up automatically.
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+primaryColor = "#1f77b4"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F0F2F6"
+textColor = "#262730"
+font = "sans serif"
+
+[server]
+# Streamlit Cloud overrides the port. These keep local `streamlit run`
+# behavior consistent with the production hosting.
+headless = true
+runOnSave = false
+
+[client]
+showErrorDetails = false  # don't leak stack traces to public demo users

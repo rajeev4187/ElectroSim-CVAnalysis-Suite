@@ -1,0 +1,83 @@
+ElectroSim-DunnECASA Suite
+Copyright (c) 2026 Rajeev Kumar. All rights reserved.
+
+This product includes software developed by Rajeev Kumar
+(rkumar@nccu.edu), North Carolina Central University.
+
+The binary distribution is governed by the terms in LICENSE.
+
+================================================================
+THIRD-PARTY COMPONENTS
+================================================================
+
+The ElectroSim-DunnECASA Suite binary embeds, links against, or is
+distributed alongside the following third-party open-source
+components. Each is reproduced under its own license. The full
+license texts are bundled inside each official release zip under
+the `licenses/` folder and are not reproduced in this NOTICE in
+their entirety.
+
+Scientific stack
+----------------
+  NumPy           BSD 3-Clause  https://numpy.org/
+  pandas          BSD 3-Clause  https://pandas.pydata.org/
+  SciPy           BSD 3-Clause  https://scipy.org/
+  scikit-learn    BSD 3-Clause  https://scikit-learn.org/
+  Matplotlib      PSF-based     https://matplotlib.org/stable/users/project/license.html
+  Plotly.py       MIT           https://plotly.com/python/
+  Kaleido         MIT           https://github.com/plotly/Kaleido
+
+Data I/O
+--------
+  openpyxl        MIT           https://openpyxl.readthedocs.io/
+  h5py            BSD 3-Clause  https://www.h5py.org/
+
+UI / web app
+------------
+  Streamlit       Apache 2.0    https://streamlit.io/
+  pywebview       BSD 3-Clause  https://pywebview.flowrl.com/
+
+Packaging (runtime-embedded interpreter only)
+---------------------------------------------
+  CPython         PSF-2.0       https://www.python.org/
+  PyInstaller     GPL-2.0       https://pyinstaller.org/
+                  (with the standard PyInstaller bootloader
+                   runtime exception permitting redistribution
+                   of frozen applications under any license)
+
+Each component is used unmodified except where required for
+PyInstaller packaging.
+
+================================================================
+ATTRIBUTION OF ANALYTICAL METHODS
+================================================================
+
+The scientific methods implemented by the Suite are documented in
+docs/methods.md. Key references:
+
+  Dunn et al. (Capacitive vs diffusion decomposition)
+      Wang, J.; Polleux, J.; Lim, J.; Dunn, B.
+      J. Phys. Chem. C 2007, 111, 14925.
+
+  ECASA / Cdl methodology
+      McCrory, C. C. L.; Jung, S.; Peters, J. C.; Jaramillo, T. F.
+      J. Am. Chem. Soc. 2013, 135, 16977.
+
+  Randles–Sevcik equation
+      Bard, A. J.; Faulkner, L. R.
+      Electrochemical Methods: Fundamentals and Applications, 2nd ed.
+      Wiley, 2001.
+
+These references describe the methods implemented; they do not
+imply endorsement of this Software by the original authors.
+
+================================================================
+CONTACT
+================================================================
+
+For inclusion under a different license, commercial use, or
+distribution outside the terms of LICENSE, contact:
+
+    Rajeev Kumar
+    rkumar@nccu.edu
+    North Carolina Central University

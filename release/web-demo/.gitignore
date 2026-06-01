@@ -1,0 +1,32 @@
+# Web-demo .gitignore — overrides release/.gitignore for this subfolder.
+#
+# IMPORTANT: do NOT add `*.pyc` here. The compiled engine
+# (electrosim_engine.pyc) is the whole reason this folder exists — it MUST
+# be committed to the public repo so Streamlit Cloud can load it.
+
+# Maintainer's local working copies of the unobfuscated source — should
+# never reach the public repo.
+streamlined_app.py
+streamlined_app.py.bak
+electrosim_app.py.bak
+electrosim_app_original.py
+electrosim_engine.pyc.bak
+
+# Internal deployment notes — do not leak to the public repo.
+SETUP.md
+
+# Streamlit secrets (auth tokens, API keys) — never commit.
+.streamlit/secrets.toml
+
+# Local working dirs / build artifacts
+__pycache__/
+.venv/
+venv/
+build/
+dist/
+
+# Editor / OS junk
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
