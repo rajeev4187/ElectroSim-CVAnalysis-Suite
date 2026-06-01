@@ -18,7 +18,7 @@ Maintained by **Rajeev Kumar** (<rkumar@nccu.edu>), North Carolina Central Unive
 
 The suite ships in **three complementary forms**:
 
-1. **Hosted web demo (Streamlit)** — the fastest way in: run every analysis in your browser, nothing to install (see **Try it now** below).
+1. **Hosted web demo (Streamlit)** — the fastest way in: run every analysis in your browser at **[electrosim-dunnecasa-suite.streamlit.app](https://electrosim-dunnecasa-suite.streamlit.app/)**, nothing to install.
 2. **Web app (PyWebView desktop window)** — the same Streamlit app wrapped in a native desktop window, fully offline.
 3. **Tkinter desktop GUI** — lightweight native desktop application with the same analyses.
 
@@ -28,7 +28,7 @@ The suite ships in **three complementary forms**:
 
 The quickest way to use the Suite is the **hosted Streamlit web app** — open it in your browser, upload a CV file (wide Excel or stacked CSV), and get Dunn's Method, ECASA, and Randles–Sevcik results instantly. No download, no setup, nothing to configure.
 
-> **Live demo:** *(public URL added once deployed to Streamlit Community Cloud)*
+> **▶️ Live demo — <https://electrosim-dunnecasa-suite.streamlit.app/>** — try it right now in your browser, no install.
 
 Prefer the same app on your own machine, or need the full offline desktop builds? See **[Running the web app locally](#running-the-web-app-locally)** or **[Downloads](#downloads)** below.
 
