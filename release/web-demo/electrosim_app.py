@@ -70,6 +70,14 @@ def _verify_under_streamlit_run() -> None:
 _verify_under_streamlit_run()
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
+
+# Run from this folder so the engine's CWD-relative asset lookups (e.g. the
+# Tutorials screenshots in sample_data/) resolve regardless of where the app
+# was launched. Streamlit Community Cloud launches with the working directory
+# set to the repo root — not the app's folder — which otherwise leaves those
+# relative paths pointing at the wrong place ("screenshot not found").
+os.chdir(_HERE)
+
 _PY_TAG = f"cp{sys.version_info.major}{sys.version_info.minor}"
 _ENGINE_PYC = os.path.join(_HERE, f"electrosim_engine.{_PY_TAG}.pyc")
 
