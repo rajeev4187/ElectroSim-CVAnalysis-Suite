@@ -59,12 +59,15 @@
 #define DistHybridDir   "..\..\dist\ElectroSim-DunnECASA-Suite"
 #define DistTkDir       "..\..\dist\ElectroSim-DunnECASA-Suite-Tkinter"
 
-; Auxiliary content (release/ folder is one level up from release\installer\)
-#define ReleaseLicense  "..\LICENSE"
-#define ReleaseNotice   "..\NOTICE"
-#define ReleaseReadme   "..\README.md"
-#define ReleaseChangelog "..\CHANGELOG.md"
-#define ReleaseCitation "..\CITATION.cff"
+; Auxiliary content. LICENSE/NOTICE/README/CHANGELOG/CITATION live at the
+; repo root (two levels up from release\installer\) — they are the single
+; canonical copies, no longer duplicated under release\. sample_data and docs
+; remain under release\ (one level up).
+#define ReleaseLicense  "..\..\LICENSE"
+#define ReleaseNotice   "..\..\NOTICE"
+#define ReleaseReadme   "..\..\README.md"
+#define ReleaseChangelog "..\..\CHANGELOG.md"
+#define ReleaseCitation "..\..\CITATION.cff"
 #define ReleaseSampleData "..\sample_data\*"
 #define ReleaseDocs     "..\docs\*"
 

@@ -45,6 +45,9 @@ requirements*.txt
 # --- Installer build output ------------------------------------------------
 # The compiled Setup-X.Y.exe is hundreds of MB and is uploaded as a GitHub
 # Releases binary attachment — never committed to the repo.
+# Anchored to the real location (this is the sole .gitignore now that the
+# duplicate release/.gitignore has been removed).
+release/installer/Output/
 installer/Output/
 
 # --- Local OS junk ---------------------------------------------------------
