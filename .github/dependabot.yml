@@ -1,0 +1,15 @@
+# Dependabot keeps the hosted Streamlit demo's pinned dependencies current.
+# It opens a reviewed PR when a newer version (or a security fix) is available,
+# so updates are deliberate instead of silently pulled on the next Cloud build.
+# Docs: https://docs.github.com/code-security/dependabot
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/release/web-demo"   # location of the demo's requirements.txt
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+    commit-message:
+      prefix: "deps"
