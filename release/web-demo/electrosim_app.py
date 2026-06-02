@@ -126,8 +126,94 @@ except Exception as exc:
         f"Python."
     ) from exc
 
+# -- Citation block ---------------------------------------------------------
+# Show "How to cite" inside the engine's data-uploader tab ("📁 Data Files")
+# for online users. The engine renders the whole UI and ends the run with
+# st.stop(), and Streamlit discards any deltas produced *after* st.stop()
+# fires — so the loader cannot simply append content after exec(). Instead:
+#
+#   1. hook st.tabs() to capture the "Data Files" tab container, then
+#   2. hook st.stop() to render the citation into that container immediately
+#      before the run halts, so it lands at the foot of the Data Files tab.
+#   3. A finally fallback covers the path where the engine returns without
+#      ever calling st.stop().
+#
+# Citation text mirrors ../CITATION.cff — keep the two in sync.
+import streamlit as st
+
+_DATA_TAB_LABEL = "Data Files"  # substring match against the engine's tab labels
+_data_tab = None                # captured DeltaGenerator for that tab
+_cited = False                  # render-once guard (reruns/stop+finally)
+
+_APA = (
+    "Kumar, R. (2026). *ElectroSim-DunnECASA Suite* (Version 2.0) "
+    "[Computer software]. North Carolina Central University. "
+    "https://github.com/rajeev4187/ElectroSim-DunnECASA-Suite"
+)
+_BIBTEX = (
+    "@software{kumar_electrosim_dunnecasa_2026,\n"
+    "  author    = {Kumar, Rajeev},\n"
+    "  title     = {ElectroSim-DunnECASA Suite},\n"
+    "  version   = {2.0},\n"
+    "  year      = {2026},\n"
+    "  publisher = {North Carolina Central University},\n"
+    "  url       = {https://github.com/rajeev4187/ElectroSim-DunnECASA-Suite}\n"
+    "}"
+)
+
+
+def _render_citation() -> None:
+    global _cited
+    if _cited:
+        return
+    _cited = True
+    target = _data_tab if _data_tab is not None else st
+    target.divider()
+    target.caption("📖 How to cite")
+    target.markdown(
+        "If you use this software in academic work, please cite it:\n\n"
+        + _APA
+        + "\n\nRepository: "
+        + "https://github.com/rajeev4187/ElectroSim-DunnECASA-Suite"
+    )
+    _exp = target.expander("BibTeX")
+    _exp.code(_BIBTEX, language="bibtex")
+
+
+_real_tabs = st.tabs
+
+
+def _tabs_with_citation(labels, *a, **k):
+    """Capture the Data Files tab's container as the engine creates the tabs."""
+    global _data_tab
+    result = _real_tabs(labels, *a, **k)
+    try:
+        for lbl, dg in zip(labels, result):
+            if isinstance(lbl, str) and _DATA_TAB_LABEL in lbl:
+                _data_tab = dg
+                break
+    except Exception:
+        pass
+    return result
+
+
+_real_stop = st.stop
+
+
+def _stop_with_citation(*a, **k):
+    """Render the citation just before the engine halts the run."""
+    _render_citation()
+    return _real_stop(*a, **k)
+
+
+st.tabs = _tabs_with_citation
+st.stop = _stop_with_citation
+
 # Execute the engine in *this* module's globals so all Streamlit
 # decorators, page-config calls, and st.* writes happen in the
 # running script context — same effect as if Streamlit ran the
 # original .py file directly.
-exec(_code, globals())
+try:
+    exec(_code, globals())
+finally:
+    _render_citation()
