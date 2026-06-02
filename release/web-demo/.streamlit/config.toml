@@ -16,6 +16,13 @@ font = "sans serif"
 # behavior consistent with the production hosting.
 headless = true
 runOnSave = false
+# Hardening for a public, no-login demo. CV spreadsheets are tiny, so a low
+# upload cap defends the single shared Cloud container against decompression
+# bombs / oversized files (an .xlsx is a ZIP — openpyxl can be OOM'd).
+maxUploadSize = 10        # MB per file (Streamlit default is 200 — far too high here)
+maxMessageSize = 50       # MB — websocket frame cap
+enableXsrfProtection = true  # default true; pinned explicitly so it can't regress
+enableCORS = true            # default true; pinned explicitly
 
 [client]
 showErrorDetails = false  # don't leak stack traces to public demo users

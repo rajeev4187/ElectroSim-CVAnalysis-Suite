@@ -1,12 +1,22 @@
-# Minimal runtime dependencies for the hosted Streamlit demo.
+# Runtime dependencies for the hosted Streamlit demo.
 # PyInstaller, pywebview, pytest, pyarmor — all dev-only — are excluded.
-numpy>=1.20.0
-pandas>=1.3.0
-matplotlib>=3.4.0
-scipy>=1.7.0
-scikit-learn>=1.0.0
-streamlit>=1.28.0
-plotly>=5.0.0
-kaleido>=0.2.1
-openpyxl>=3.0.0
-h5py>=3.0.0
+#
+# Versions are PINNED for reproducible, supply-chain-safe Cloud rebuilds:
+# an unpinned `>=` lets every rebuild silently pull the latest of each package
+# (and its transitive deps), so a broken or compromised release lands without
+# review. Bumps should arrive as reviewed Dependabot PRs, not surprises.
+# Pins match the maintainer's tested environment.
+numpy==2.4.6
+pandas==3.0.3
+matplotlib==3.10.9
+scipy==1.17.1
+scikit-learn==1.8.0
+streamlit==1.57.0
+plotly==6.7.0
+openpyxl==3.1.5
+h5py==3.16.0
+# kaleido is intentionally held at the 0.2.x line: it ships a self-contained
+# Chromium, so plotly static-image (PNG) export works headless on Streamlit
+# Cloud. kaleido 1.x dropped the bundled browser and needs a system Chrome
+# that Cloud does not provide — pinning to 1.x would break plot exports.
+kaleido==0.2.1
