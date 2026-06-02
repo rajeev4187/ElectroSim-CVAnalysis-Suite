@@ -42,10 +42,13 @@ if (-not $python) {
 
 if ($Clean) {
     foreach ($d in @("build", "dist")) {
-        $target = Join-Path $root $d
-        if (Test-Path $target) {
-            Write-Output "Cleaning $target"
-            Remove-Item -Recurse -Force $target
+        # NB: don't name this $target — PowerShell variables are
+        # case-insensitive, so it would clobber the $Target parameter and
+        # trip its [ValidateSet] on the next assignment.
+        $cleanDir = Join-Path $root $d
+        if (Test-Path $cleanDir) {
+            Write-Output "Cleaning $cleanDir"
+            Remove-Item -Recurse -Force $cleanDir
         }
     }
 }

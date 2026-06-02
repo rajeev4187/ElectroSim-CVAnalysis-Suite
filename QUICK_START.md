@@ -19,7 +19,7 @@ Welcome! This page walks you through installing and opening the app for the firs
 > The output should match this expected hash exactly (case-insensitive):
 >
 > ```text
-> A6629D0A51C23F17C34A921D80F2A55538AAC5CCBA6A2A5CC273FB02FC3D1505
+> 7DC6F05D6EA99ACB5E6551FB862064BB6C5B80D4B10EFE7CF65E949C91DF7B99
 > ```
 >
 > Skip this check if you don't know what hashes are — Windows will scan the file with Defender automatically.

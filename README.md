@@ -92,7 +92,7 @@ Get-FileHash -Algorithm SHA256 $env:USERPROFILE\Downloads\ElectroSim-DunnECASA-S
 Expected hash (case-insensitive):
 
 ```text
-A6629D0A51C23F17C34A921D80F2A55538AAC5CCBA6A2A5CC273FB02FC3D1505
+7DC6F05D6EA99ACB5E6551FB862064BB6C5B80D4B10EFE7CF65E949C91DF7B99
 ```
 
 ### System requirements
@@ -135,6 +135,8 @@ Ready-to-load templates live in [`release/sample_data/`](release/sample_data/) �
 | --- | --- | --- |
 | `Dunn method template.xlsx` | Dunn's Method template with annotated header rows | Wide Excel, two-row header (Potential / Current pairs per scan rate) |
 | `ECASA CV template.xlsx` | ECASA non-Faradaic window template | Wide Excel, two-row header |
+
+> **📋 Using a template?** Copy-paste your data directly into the provided template and upload it as-is. **Do not modify the first two rows** — row 1 (scan-rate headers) and row 2 (Potential / Current sub-headers) are required for the analysis tabs to read your file correctly. Add or remove data *rows* freely, but leave the two header rows intact.
 
 **Recommended workflow:** open `Dunn method template.xlsx` in **Data Files** → **Data Plotting** → **Plot** (confirm the CV looks right) → **Dunn's Method** → set branch and prominence → **Run analysis**.
 
