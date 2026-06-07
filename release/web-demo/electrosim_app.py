@@ -4,6 +4,7 @@ This file is a thin loader. The full analysis engine ships as
 compiled Python bytecode in version-suffixed sibling files:
 
     electrosim_engine.cp312.pyc   <- for Python 3.12
+    electrosim_engine.cp313.pyc   <- for Python 3.13 (Streamlit Cloud default)
     electrosim_engine.cp314.pyc   <- for Python 3.14
     electrosim_engine.cpXY.pyc    <- generally, ".cp" + major + minor
 
@@ -15,7 +16,7 @@ the original source were here.
 Why versioned files? Python's .pyc format is keyed to the exact
 interpreter version (its "magic number"). A .pyc built for 3.12
 will not run on 3.14 and vice versa. Streamlit Cloud uses a fixed
-Python (currently 3.12) while local maintainer testing typically
+Python (currently 3.13) while local maintainer testing typically
 runs on whatever is in the dev venv — shipping one .pyc per target
 version is the simplest way both paths work without reading source.
 

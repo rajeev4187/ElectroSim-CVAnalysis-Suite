@@ -34,6 +34,12 @@ requirements*.txt
 !web-demo/
 !web-demo/**
 
+# The web demo actually lives at release/web-demo/ — the patterns above are
+# anchored to the repo root, so explicitly re-include the shipped engine
+# bytecode there (one .pyc per supported Python; e.g. cp312/cp313/cp314).
+# Without this, the blanket `*.pyc` rule silently drops new engine files.
+!release/web-demo/electrosim_engine.*.pyc
+
 # build/ ships the PyInstaller spec files and the build orchestrator PS1
 # for transparency about how the binaries are produced. The blanket `build/`
 # rule above excludes any *local* PyInstaller build dir (named `build/`)

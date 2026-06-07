@@ -103,7 +103,7 @@ python electrosim_app.py
 
 **Why `streamlit run`?** The engine calls `st.set_page_config`, `st.sidebar.*`, etc. at module-load time, which need Streamlit's per-thread `ScriptRunContext`. The loader detects a missing context and prints a clear "WRONG / RIGHT" message instead of an internals traceback.
 
-**Pick the right Python** — one that has **both** Streamlit **and** a matching engine `.pyc` (currently `cp312` for 3.12, `cp314` for 3.14). If deps are missing:
+**Pick the right Python** — one that has **both** Streamlit **and** a matching engine `.pyc` (currently `cp312` for 3.12, `cp313` for 3.13 — the Streamlit Cloud default — and `cp314` for 3.14). If deps are missing:
 
 ```powershell
 py -3.14 -m pip install -r release\web-demo\requirements.txt
@@ -116,7 +116,7 @@ py -3.14 -m pip install -r release\web-demo\requirements.txt
 The Python in `release/web-demo/` is **compiled bytecode**:
 
 - [`electrosim_app.py`](release/web-demo/electrosim_app.py) — small Streamlit entry-point loader (the only `.py`, no analysis logic). This is what Streamlit Cloud runs.
-- `electrosim_engine.cp312.pyc` / `electrosim_engine.cp314.pyc` — the analysis engine, one per supported Python version. The loader auto-picks the match for the running interpreter and `exec()`s it.
+- `electrosim_engine.cp312.pyc` / `electrosim_engine.cp313.pyc` / `electrosim_engine.cp314.pyc` — the analysis engine, one per supported Python version (Streamlit Cloud currently runs 3.13). The loader auto-picks the match for the running interpreter and `exec()`s it.
 
 > **Python-version pinning.** A `.pyc` is keyed to the exact interpreter version. If Streamlit Cloud upgrades and the demo fails with a "magic number" error, recompile the upstream source (`py -3.XX -m py_compile <upstream-source>.py`) and drop `__pycache__/*.cpython-3XX.pyc` in as `electrosim_engine.cp3XX.pyc`.
 
