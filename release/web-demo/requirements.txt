@@ -5,14 +5,17 @@
 # an unpinned `>=` lets every rebuild silently pull the latest of each package
 # (and its transitive deps), so a broken or compromised release lands without
 # review. Bumps should arrive as reviewed Dependabot PRs, not surprises.
-# Pins match the maintainer's tested environment.
-numpy==2.4.6
-pandas==3.0.3
-matplotlib==3.10.9
+# Pins match the environment the engine bytecode was compiled and verified
+# against (local `streamlit run` + AppTest: all 7 tabs, 0 exceptions). pandas
+# is held at 2.3.x — the engine is tested on it, and pandas 3.0 has breaking
+# API changes to validate (via a reviewed Dependabot PR) before any bump.
+numpy==2.4.4
+pandas==2.3.3
+matplotlib==3.10.8
 scipy==1.17.1
 scikit-learn==1.8.0
-streamlit==1.57.0
-plotly==6.7.0
+streamlit==1.55.0
+plotly==6.6.0
 openpyxl==3.1.5
 h5py==3.16.0
 # kaleido is intentionally held at the 0.2.x line: it ships a self-contained
