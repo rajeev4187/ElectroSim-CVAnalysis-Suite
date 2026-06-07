@@ -19,6 +19,12 @@ on:
   schedule:
     - cron: '27 22 * * 6'
 
+# Least-privilege default: the GITHUB_TOKEN is granted no scopes unless a job
+# explicitly requests them (the analyze job below grants exactly what CodeQL
+# needs and nothing more). Hardens against a compromised action exfiltrating
+# write access.
+permissions: {}
+
 jobs:
   analyze:
     name: Analyze (${{ matrix.language }})
@@ -55,7 +61,13 @@ jobs:
         # your codebase is analyzed, see https://docs.github.com/en/code-security/code-scanning/creating-an-advanced-setup-for-code-scanning/codeql-code-scanning-for-compiled-languages
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      # Pinned to an immutable commit SHA (not the mutable @v4 tag) so a
+      # tag-move supply-chain attack can't swap the action out from under us.
+      # Dependabot (github-actions) proposes reviewed SHA bumps.
+      uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5  # v4
+      with:
+        # Don't leave the GITHUB_TOKEN in .git/config on the runner after checkout.
+        persist-credentials: false
 
     # Add any setup steps before running the `github/codeql-action/init` action.
     # This includes steps like installing compilers or runtimes (`actions/setup-node`
@@ -65,10 +77,12 @@ jobs:
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v4
+      uses: github/codeql-action/init@8aad20d150bbac5944a9f9d289da16a4b0d87c1e  # v4
       with:
         languages: ${{ matrix.language }}
         build-mode: ${{ matrix.build-mode }}
+        # Deeper security ruleset than the default pack.
+        queries: security-extended
         # If you wish to specify custom queries, you can do so here or in a config file.
         # By default, queries listed here will override any specified in a config file.
         # Prefix the list here with "+" to use these queries and those in the config file.
@@ -94,6 +108,6 @@ jobs:
         exit 1
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v4
+      uses: github/codeql-action/analyze@8aad20d150bbac5944a9f9d289da16a4b0d87c1e  # v4
       with:
         category: "/language:${{matrix.language}}"
