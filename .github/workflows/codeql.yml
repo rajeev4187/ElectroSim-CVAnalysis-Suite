@@ -64,7 +64,7 @@ jobs:
       # Pinned to an immutable commit SHA (not the mutable @v4 tag) so a
       # tag-move supply-chain attack can't swap the action out from under us.
       # Dependabot (github-actions) proposes reviewed SHA bumps.
-      uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5  # v4
+      uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10  # v6.0.3
       with:
         # Don't leave the GITHUB_TOKEN in .git/config on the runner after checkout.
         persist-credentials: false
