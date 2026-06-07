@@ -1,17 +1,29 @@
 #!/usr/bin/env pwsh
-# Build the ElectroSim-DunnECASA Suite Windows executables.
+# Build the ElectroSim-CV Analysis Suite Windows executables.
+#
+# The Streamlit/PyWebView app (streamlined_app.py) exposes seven scan-rate CV
+# analyses: Dunn's Method, Trasatti, ECASA, Areal Capacitance, Randles-Sevcik,
+# Peak Area / Charge, and Electron-Transfer Kinetics (Nicholson & Laviron).
+# These rely on scipy (peak detection), plotly + kaleido (figures / PNG export)
+# and openpyxl (Excel parsing) -- all pinned in requirements.txt. The frozen
+# exe is named ElectroSim-CVAnalysis-Suite.exe (the Tkinter target is
+# ElectroSim-CVAnalysis-Suite-Tkinter.exe). The git repository and hosted-demo
+# URL keep their historical ElectroSim-CVAnalysis-Suite identifier.
 #
 # Usage:
 #   .\electrosim_build.ps1                       # build both targets
 #   .\electrosim_build.ps1 -Target streamlit     # only the Streamlit/PyWebView exe
 #   .\electrosim_build.ps1 -Target tkinter       # only the Tkinter exe
 #   .\electrosim_build.ps1 -Clean                # delete previous build/ and dist/ first
+#   .\electrosim_build.ps1 -SyncDeps             # pip install -r requirements.txt first
 
 param(
     [ValidateSet("all", "streamlit", "tkinter")]
     [string]$Target = "all",
 
-    [switch]$Clean
+    [switch]$Clean,
+
+    [switch]$SyncDeps
 )
 
 $ErrorActionPreference = "Stop"
@@ -19,8 +31,8 @@ $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 
 $specs = @{
-    streamlit = "ElectroSim-DunnECASA-Suite.spec"
-    tkinter   = "ElectroSim-DunnECASA-Suite-Tkinter.spec"
+    streamlit = "ElectroSim-CVAnalysis-Suite.spec"
+    tkinter   = "ElectroSim-CVAnalysis-Suite-Tkinter.spec"
 }
 
 # Prefer the project venv if present. Try .venv first (active layout
@@ -50,6 +62,21 @@ if ($Clean) {
             Write-Output "Cleaning $cleanDir"
             Remove-Item -Recurse -Force $cleanDir
         }
+    }
+}
+
+# Optionally sync all runtime dependencies (scipy, plotly, kaleido, openpyxl,
+# streamlit, pywebview, ...) so the frozen build picks them up.
+if ($SyncDeps) {
+    $reqs = Join-Path $root "requirements.txt"
+    if (Test-Path $reqs) {
+        Write-Output "Syncing dependencies from requirements.txt..."
+        & $python -m pip install -r $reqs
+        if ($LASTEXITCODE -ne 0) {
+            throw "Dependency sync failed with exit code $LASTEXITCODE"
+        }
+    } else {
+        Write-Output "Warning: requirements.txt not found; skipping -SyncDeps."
     }
 }
 

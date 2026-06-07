@@ -1,5 +1,5 @@
 ; ============================================================================
-; ElectroSim-DunnECASA Suite — Windows installer
+; ElectroSim-CV Analysis Suite — Windows installer
 ; Inno Setup script (compile with ISCC.exe — https://jrsoftware.org/isinfo.php)
 ; ============================================================================
 ;
@@ -17,25 +17,25 @@
 ; Build prerequisites
 ; -------------------
 ;   1. Build both PyInstaller bundles from the project root:
-;        pyinstaller ElectroSim-DunnECASA-Suite.spec         --noconfirm
-;        pyinstaller ElectroSim-DunnECASA-Suite-Tkinter.spec --noconfirm
+;        pyinstaller ElectroSim-CVAnalysis-Suite.spec         --noconfirm
+;        pyinstaller ElectroSim-CVAnalysis-Suite-Tkinter.spec --noconfirm
 ;
 ;      This produces:
-;        dist\ElectroSim-DunnECASA-Suite\
-;        dist\ElectroSim-DunnECASA-Suite-Tkinter\
+;        dist\ElectroSim-CVAnalysis-Suite\
+;        dist\ElectroSim-CVAnalysis-Suite-Tkinter\
 ;
 ;   2. Install Inno Setup 6 from https://jrsoftware.org/isdl.php (free, OSS).
 ;
 ;   3. From the project root, compile this script:
 ;        "%ProgramFiles(x86)%\Inno Setup 6\ISCC.exe" release\installer\electrosim_setup.iss
 ;
-;      Output: release\installer\Output\ElectroSim-DunnECASA-Suite-Setup-2.0.exe
+;      Output: release\installer\Output\ElectroSim-CVAnalysis-Suite-Setup-2.1.exe
 ;
 ; What the installer does (user-visible)
 ; --------------------------------------
-;   • Installs under %LocalAppData%\Programs\ElectroSim-DunnECASA Suite\
+;   • Installs under %LocalAppData%\Programs\ElectroSim-CV Analysis Suite\
 ;     (no admin / UAC prompt; works on locked-down lab PCs).
-;   • Creates ONE Desktop shortcut → "ElectroSim-DunnECASA Suite"
+;   • Creates ONE Desktop shortcut → "ElectroSim-CV Analysis Suite"
 ;     (hybrid build — what the README calls "recommended").
 ;   • Creates a Start Menu folder with: the main app, a Tkinter-fallback
 ;     shortcut, the User Guide, the Sample Data folder, and Uninstall.
@@ -45,19 +45,19 @@
 ;
 ; ============================================================================
 
-#define MyAppName       "ElectroSim-DunnECASA Suite"
-#define MyAppVersion    "2.0"
+#define MyAppName       "ElectroSim-CV Analysis Suite"
+#define MyAppVersion    "2.1"
 #define MyAppPublisher  "Rajeev Kumar, North Carolina Central University"
-#define MyAppURL        "https://github.com/rajeev4187/ElectroSim-DunnECASA-Suite"
-#define MyAppSupportURL "https://github.com/rajeev4187/ElectroSim-DunnECASA-Suite/issues"
-#define MyAppExeHybrid  "ElectroSim-DunnECASA-Suite.exe"
-#define MyAppExeTk      "ElectroSim-DunnECASA-Suite-Tkinter.exe"
+#define MyAppURL        "https://github.com/rajeev4187/ElectroSim-CVAnalysis-Suite"
+#define MyAppSupportURL "https://github.com/rajeev4187/ElectroSim-CVAnalysis-Suite/issues"
+#define MyAppExeHybrid  "ElectroSim-CVAnalysis-Suite.exe"
+#define MyAppExeTk      "ElectroSim-CVAnalysis-Suite-Tkinter.exe"
 
 ; Paths to the PyInstaller bundles, relative to the project root.
 ; (ISCC's working dir is whatever the user `cd`s into before running it; the
 ; relative paths below assume the script is invoked from the project root.)
-#define DistHybridDir   "..\..\dist\ElectroSim-DunnECASA-Suite"
-#define DistTkDir       "..\..\dist\ElectroSim-DunnECASA-Suite-Tkinter"
+#define DistHybridDir   "..\..\dist\ElectroSim-CVAnalysis-Suite"
+#define DistTkDir       "..\..\dist\ElectroSim-CVAnalysis-Suite-Tkinter"
 
 ; Auxiliary content. LICENSE/NOTICE/README/CHANGELOG/CITATION live at the
 ; repo root (two levels up from release\installer\) — they are the single
@@ -109,7 +109,7 @@ DisableFinishedPage=no
 DisableStartupPrompt=yes
 
 OutputDir=Output
-OutputBaseFilename=ElectroSim-DunnECASA-Suite-Setup-{#MyAppVersion}
+OutputBaseFilename=ElectroSim-CVAnalysis-Suite-Setup-{#MyAppVersion}
 Compression=lzma2/ultra
 SolidCompression=yes
 LZMAUseSeparateProcess=yes
@@ -164,13 +164,13 @@ Source: "{#ReleaseDocs}"; DestDir: "{app}\docs"; Flags: ignoreversion recursesub
 ; created. The Tkinter build is reachable from Start Menu only — it's a
 ; fallback, not the primary entry point.
 ; ---------------------------------------------------------------------------
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\hybrid\{#MyAppExeHybrid}"; WorkingDir: "{app}\hybrid"; Comment: "Open the ElectroSim-DunnECASA Suite"
+Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\hybrid\{#MyAppExeHybrid}"; WorkingDir: "{app}\hybrid"; Comment: "Open the ElectroSim-CV Analysis Suite"
 
 ; ---------------------------------------------------------------------------
 ; Start Menu: friendly label for the main app, then a "Tools" subfolder for
 ; the secondary entries so the top of the menu stays uncluttered.
 ; ---------------------------------------------------------------------------
-Name: "{autoprograms}\{#MyAppName}\{#MyAppName}"; Filename: "{app}\hybrid\{#MyAppExeHybrid}"; WorkingDir: "{app}\hybrid"; Comment: "Open the ElectroSim-DunnECASA Suite (recommended build)"
+Name: "{autoprograms}\{#MyAppName}\{#MyAppName}"; Filename: "{app}\hybrid\{#MyAppExeHybrid}"; WorkingDir: "{app}\hybrid"; Comment: "Open the ElectroSim-CV Analysis Suite (recommended build)"
 Name: "{autoprograms}\{#MyAppName}\User Guide"; Filename: "{app}\docs\user_guide.md"; Comment: "Open the user guide"
 Name: "{autoprograms}\{#MyAppName}\Sample Data Folder"; Filename: "{app}\sample_data\"; Comment: "Browse sample CV templates"
 Name: "{autoprograms}\{#MyAppName}\Tools\{#MyAppName} (Tkinter fallback)"; Filename: "{app}\tkinter\{#MyAppExeTk}"; WorkingDir: "{app}\tkinter"; Comment: "Lightweight Tkinter build — use if the main app fails to launch"

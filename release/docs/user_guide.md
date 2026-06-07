@@ -1,16 +1,16 @@
 # User Guide
 
-A practical walkthrough of the ElectroSim-DunnECASA Suite. The user interface is identical between the **Tkinter desktop build** and the **PyWebView/Streamlit hybrid build** — pick whichever you prefer.
+A practical walkthrough of the ElectroSim-CV Analysis Suite. The user interface is identical between the **Tkinter desktop build** and the **PyWebView/Streamlit hybrid build** — pick whichever you prefer.
 
 ---
 
 ## 1. Install
 
-1. Download the latest release zip from the [Releases](../../../releases) page.
-2. Extract anywhere. No installer is run.
-3. Double-click the `.exe` to launch.
+1. Download **`ElectroSim-CVAnalysis-Suite-Setup-2.1.exe`** from the [Releases](../../../releases) page.
+2. Double-click it. The installer is per-user (no admin prompt): Welcome → Installing → Finish (~15 s).
+3. Launch from the Desktop shortcut or the Start Menu (the Tkinter fallback is under **Tools**).
 
-The first launch may take a few seconds longer (Windows verifies the binary).
+If Windows SmartScreen shows "Windows protected your PC", click **More info → Run anyway** (the installer is unsigned). See [QUICK_START.md](../../QUICK_START.md) for the plain-English walkthrough. The first launch may take a few seconds longer while Windows verifies the binary.
 
 ---
 
@@ -55,7 +55,27 @@ If your file is a multi-scan-rate Excel template, each scan rate is plotted as a
 
 ---
 
-## 5. ECASA tab
+## 5. Trasatti Analysis tab
+
+**What it does:** partitions the voltammetric charge q* into outer (readily accessible), total (all sites), and inner (porous) contributions from its scan-rate dependence.
+
+**Inputs:**
+
+| Control | Meaning |
+| --- | --- |
+| Charge basis | Anodic, cathodic, or average (½∮\|i\|dE) charge |
+| Integration window (V) | Potential range over which q* is integrated |
+| Linear-region selector | Exclude scan rates that bend away from the straight line |
+
+**Output:**
+
+- Outer charge q*_o, total charge q*_T, inner charge q*_i = q*_T − q*_o (per cm²).
+- The two extrapolation plots (q* vs ν^−½ and 1/q* vs ν^½), excluded points greyed.
+- Contribution bar chart and accessibility ratio q*_o/q*_T. Needs ≥3 scan rates.
+
+---
+
+## 6. ECASA tab
 
 **What it does:** computes the electrochemically active surface area from double-layer charging in the non-Faradaic window.
 
@@ -77,7 +97,27 @@ If your file is a multi-scan-rate Excel template, each scan rate is plotted as a
 
 ---
 
-## 6. Randles–Sevcik tab
+## 7. Areal Capacitance tab
+
+**What it does:** computes the areal capacitance C_A (F cm⁻²) from the enclosed CV loop area at each scan rate, plus the rate-capability and retention curves.
+
+**Inputs:**
+
+| Control | Meaning |
+| --- | --- |
+| Potential-window slider | Range over which the CV loop area is integrated |
+| Electrode area A (cm²) | Geometric area used to convert C → C_A |
+
+**Output:**
+
+- Per-scan-rate C_A table.
+- Rate-capability plot (C_A vs scan rate) and retention curve (relative to the slowest scan rate).
+
+Use a capacitive (non-Faradaic) window for a meaningful value. Gravimetric capacitance (F/g) is intentionally not computed from CV.
+
+---
+
+## 8. Randles–Sevcik tab
 
 **What it does:** extracts the diffusion coefficient D from peak current vs √(scan rate).
 
@@ -96,9 +136,51 @@ If your file is a multi-scan-rate Excel template, each scan rate is plotted as a
 - Diffusion coefficient D in cm²/s.
 - Plot of the linear fit overlaying the detected peak points.
 
+This is a Faradaic analysis — it refuses to run if no redox peak is detected.
+
 ---
 
-## 7. Tutorials tab
+## 9. Peak Area / Charge tab
+
+**What it does:** integrates a single CV's redox peak after baseline subtraction to report the charge passed, surface coverage, and moles.
+
+**Inputs:**
+
+| Control | Meaning |
+| --- | --- |
+| Scan rate | Which single CV to integrate |
+| Peak(s) | Anodic, cathodic, or both |
+| Integration window | Set with a slider or by dragging a box on the CV plot (double-click clears) |
+| Baseline | Linear endpoint-to-endpoint, horizontal, or none |
+| n electrons | Leave blank to estimate n from the peak FWHM (confirm before Γ/N) |
+
+**Output:**
+
+- Charge Q, surface coverage Γ, moles N, and the Q_a/Q_c ratio (≈1 ⇒ reversible/stable couple).
+- A Faradaic gate skips the analysis if the window has no genuine redox peak (the CV stays shown so you can re-select).
+
+---
+
+## 10. Electron-Transfer Kinetics tab
+
+**What it does:** extracts the heterogeneous rate constant from how peak positions shift with scan rate — Nicholson (diffusing couples) and Laviron (surface-confined).
+
+**Inputs:**
+
+| Control | Meaning |
+| --- | --- |
+| n electrons | Leave blank to auto-estimate from reversible ΔEp or from FWHM (confirm first) |
+| D (cm²/s) | Diffusion coefficient for the Nicholson k⁰ (e.g. from the Randles–Sevcik tab) |
+
+**Output:**
+
+- Detected-peak and ΔEp table per scan rate.
+- Nicholson k⁰ (via the Lavagnini working-curve fit) and Laviron α, (1−α), k_s from Ep vs ln ν slopes.
+- A Faradaic gate prevents running on a non-Faradaic CV.
+
+---
+
+## 11. Tutorials tab
 
 The Tutorials tab contains the canonical equations for each analysis and a list of the sample templates shipped in `sample_data/`. Read this first if you are setting up a new dataset and want to match the expected column conventions.
 

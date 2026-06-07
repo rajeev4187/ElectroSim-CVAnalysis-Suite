@@ -2,7 +2,7 @@
 """PyInstaller spec for the ElectroSim-DunnECASA Suite.
 
 Build with:
-    pyinstaller ElectroSim-DunnECASA-Suite.spec --noconfirm
+    pyinstaller ElectroSim-CVAnalysis-Suite.spec --noconfirm
 """
 
 from PyInstaller.utils.hooks import collect_all, copy_metadata
@@ -87,7 +87,7 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name="ElectroSim-DunnECASA-Suite",
+    name="ElectroSim-CVAnalysis-Suite",
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -107,5 +107,5 @@ coll = COLLECT(
     strip=False,
     upx=False,
     upx_exclude=[],
-    name="ElectroSim-DunnECASA-Suite",
+    name="ElectroSim-CVAnalysis-Suite",
 )

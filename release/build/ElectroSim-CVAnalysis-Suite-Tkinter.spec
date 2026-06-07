@@ -2,9 +2,9 @@
 """PyInstaller spec for the ElectroSim-DunnECASA Suite Tkinter desktop build.
 
 Build with:
-    pyinstaller ElectroSim-DunnECASA-Suite-Tkinter.spec --noconfirm
+    pyinstaller ElectroSim-CVAnalysis-Suite-Tkinter.spec --noconfirm
 
-Produces dist/ElectroSim-DunnECASA-Suite-Tkinter/ElectroSim-DunnECASA-Suite-Tkinter.exe
+Produces dist/ElectroSim-CVAnalysis-Suite-Tkinter/ElectroSim-CVAnalysis-Suite-Tkinter.exe
 """
 
 from PyInstaller.utils.hooks import collect_all, copy_metadata
@@ -75,7 +75,7 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name="ElectroSim-DunnECASA-Suite-Tkinter",
+    name="ElectroSim-CVAnalysis-Suite-Tkinter",
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -97,5 +97,5 @@ coll = COLLECT(
     strip=False,
     upx=False,
     upx_exclude=[],
-    name="ElectroSim-DunnECASA-Suite-Tkinter",
+    name="ElectroSim-CVAnalysis-Suite-Tkinter",
 )

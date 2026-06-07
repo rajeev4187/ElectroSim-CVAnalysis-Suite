@@ -60,3 +60,7 @@ desktop.ini
 .idea/
 *.swp
 *.swo
+
+# --- Agent / tooling scratch ----------------------------------------------
+# Claude Code session state (scheduled-task locks, etc.) — never published.
+.claude/

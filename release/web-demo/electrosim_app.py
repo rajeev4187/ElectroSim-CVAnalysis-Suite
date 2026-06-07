@@ -1,4 +1,4 @@
-"""ElectroSim-DunnECASA Suite — Streamlit web-demo entry point.
+"""ElectroSim-CV Analysis Suite — Streamlit web-demo entry point.
 
 This file is a thin loader. The full analysis engine ships as
 compiled Python bytecode in version-suffixed sibling files:
@@ -146,18 +146,18 @@ _data_tab = None                # captured DeltaGenerator for that tab
 _cited = False                  # render-once guard (reruns/stop+finally)
 
 _APA = (
-    "Kumar, R. (2026). *ElectroSim-DunnECASA Suite* (Version 2.0) "
+    "Kumar, R. (2026). *ElectroSim-CV Analysis Suite* (Version 2.1) "
     "[Computer software]. North Carolina Central University. "
-    "https://github.com/rajeev4187/ElectroSim-DunnECASA-Suite"
+    "https://github.com/rajeev4187/ElectroSim-CVAnalysis-Suite"
 )
 _BIBTEX = (
-    "@software{kumar_electrosim_dunnecasa_2026,\n"
+    "@software{kumar_electrosim_cv_analysis_2026,\n"
     "  author    = {Kumar, Rajeev},\n"
-    "  title     = {ElectroSim-DunnECASA Suite},\n"
-    "  version   = {2.0},\n"
+    "  title     = {ElectroSim-CV Analysis Suite},\n"
+    "  version   = {2.1},\n"
     "  year      = {2026},\n"
     "  publisher = {North Carolina Central University},\n"
-    "  url       = {https://github.com/rajeev4187/ElectroSim-DunnECASA-Suite}\n"
+    "  url       = {https://github.com/rajeev4187/ElectroSim-CVAnalysis-Suite}\n"
     "}"
 )
 
@@ -174,7 +174,7 @@ def _render_citation() -> None:
         "If you use this software in academic work, please cite it:\n\n"
         + _APA
         + "\n\nRepository: "
-        + "https://github.com/rajeev4187/ElectroSim-DunnECASA-Suite"
+        + "https://github.com/rajeev4187/ElectroSim-CVAnalysis-Suite"
     )
     _exp = target.expander("BibTeX")
     _exp.code(_BIBTEX, language="bibtex")

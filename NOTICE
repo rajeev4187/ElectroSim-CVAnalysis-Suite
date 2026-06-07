@@ -1,4 +1,5 @@
-ElectroSim-DunnECASA Suite
+ElectroSim-CV Analysis Suite
+(formerly ElectroSim-DunnECASA Suite)
 Copyright (c) 2026 Rajeev Kumar. All rights reserved.
 
 This product includes software developed by Rajeev Kumar
@@ -10,7 +11,7 @@ The binary distribution is governed by the terms in LICENSE.
 THIRD-PARTY COMPONENTS
 ================================================================
 
-The ElectroSim-DunnECASA Suite binary embeds, links against, or is
+The ElectroSim-CV Analysis Suite binary embeds, links against, or is
 distributed alongside the following third-party open-source
 components. Each is reproduced under its own license. The full
 license texts are bundled inside each official release zip under
@@ -59,14 +60,26 @@ docs/methods.md. Key references:
       Wang, J.; Polleux, J.; Lim, J.; Dunn, B.
       J. Phys. Chem. C 2007, 111, 14925.
 
+  Trasatti inner/outer charge analysis
+      Ardizzone, S.; Fregonara, G.; Trasatti, S.
+      Electrochim. Acta 1990, 35, 263.
+
   ECASA / Cdl methodology
       McCrory, C. C. L.; Jung, S.; Peters, J. C.; Jaramillo, T. F.
       J. Am. Chem. Soc. 2013, 135, 16977.
 
-  Randles–Sevcik equation
+  Randles–Sevcik equation; peak-current/charge relations
       Bard, A. J.; Faulkner, L. R.
       Electrochemical Methods: Fundamentals and Applications, 2nd ed.
       Wiley, 2001.
+
+  Electron-transfer kinetics (Nicholson method)
+      Nicholson, R. S. Anal. Chem. 1965, 37, 1351;
+      Lavagnini, I.; Antiochia, R.; Magno, F.
+      Electroanalysis 2004, 16, 505 (working-curve fit).
+
+  Electron-transfer kinetics (surface-confined, Laviron method)
+      Laviron, E. J. Electroanal. Chem. 1979, 101, 19.
 
 These references describe the methods implemented; they do not
 imply endorsement of this Software by the original authors.

@@ -1,32 +1,39 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
-title: "ElectroSim-DunnECASA Suite"
+title: "ElectroSim-CV Analysis Suite"
 abstract: >-
-  A toolkit for cyclic voltammetry analysis implementing Dunn's Method
-  (charge-storage mechanism classification), ECASA (electrochemically
-  active surface area), and Randles-Sevcik (diffusion coefficient)
-  workflows. Distributed in three interchangeable forms: a Tkinter
-  native desktop application, a Streamlit-PyWebView hybrid desktop
-  application, and a hosted Streamlit web demo. This citation covers
-  any of the three forms — results produced by the web demo, the
-  desktop applications, or the underlying analytical engine should all
-  cite this entry.
+  A toolkit for cyclic voltammetry (CV) analysis recorded at multiple
+  scan rates, providing seven complementary analyses that share one
+  uploaded file: Dunn's Method (charge-storage mechanism
+  classification), Trasatti analysis (inner/outer/total voltammetric
+  charge), ECASA (electrochemically active surface area), Areal
+  Capacitance & rate capability, Randles-Sevcik (diffusion
+  coefficient), Peak Area / Charge (surface coverage and moles), and
+  Electron-Transfer Kinetics (Nicholson & Laviron rate constants).
+  Distributed in three interchangeable forms: a Tkinter native desktop
+  application, a Streamlit-PyWebView hybrid desktop application, and a
+  hosted Streamlit web demo. This citation covers any of the three
+  forms — results produced by the web demo, the desktop applications,
+  or the underlying analytical engine should all cite this entry.
 authors:
   - family-names: Kumar
     given-names: Rajeev
     affiliation: "North Carolina Central University"
     email: rkumar@nccu.edu
-version: "2.0"
-date-released: "2026-05-31"
+version: "2.1"
+date-released: "2026-06-07"
 license: "LicenseRef-Proprietary-ElectroSim"
-url: "https://github.com/rajeev4187/ElectroSim-DunnECASA-Suite"
-repository-code: "https://github.com/rajeev4187/ElectroSim-DunnECASA-Suite"
+url: "https://github.com/rajeev4187/ElectroSim-CVAnalysis-Suite"
+repository-code: "https://github.com/rajeev4187/ElectroSim-CVAnalysis-Suite"
 keywords:
   - electrochemistry
   - cyclic voltammetry
   - Dunn's method
+  - Trasatti analysis
   - ECASA
+  - areal capacitance
   - Randles-Sevcik
+  - electron-transfer kinetics
   - supercapacitor
   - battery
   - pseudocapacitor
