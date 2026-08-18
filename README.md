@@ -124,7 +124,7 @@ The Python in `release/web-demo/` is **compiled bytecode**:
 
 ## Citation
 
-If you use this in academic work, please cite via the metadata in [CITATION.cff](CITATION.cff). A DOI is issued for each release through [Zenodo](https://zenodo.org/).
+If you use this in academic work, please cite via the metadata in [CITATION.cff](CITATION.cff). 
 
 ---
 
