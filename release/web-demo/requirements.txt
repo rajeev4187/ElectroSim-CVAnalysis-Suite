@@ -25,7 +25,7 @@ h5py==3.16.0
 kaleido==0.2.1
 # Pillow: required by export_style.py for TIFF (LZW, real DPI tags) and
 # JPEG figure export.
-Pillow==12.1.1
+Pillow==12.3.0
 # galvani: optional Biologic EC-Lab .mpr/.mpt parsing in instrument_formats.py.
 # The engine still runs and gives a clear message without it — only
 # .mpr/.mpt uploads need it — but it's small, so it ships here too.
