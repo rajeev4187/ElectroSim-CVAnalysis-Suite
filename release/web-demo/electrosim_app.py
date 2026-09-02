@@ -79,6 +79,13 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 # relative paths pointing at the wrong place ("screenshot not found").
 os.chdir(_HERE)
 
+# Make sibling loader modules (instrument_formats.py, export_style.py)
+# importable regardless of how the script was launched — `streamlit run`
+# puts the script's directory on sys.path automatically, but other
+# launchers (e.g. Streamlit's AppTest harness) don't.
+if _HERE not in sys.path:
+    sys.path.insert(0, _HERE)
+
 _PY_TAG = f"cp{sys.version_info.major}{sys.version_info.minor}"
 _ENGINE_PYC = os.path.join(_HERE, f"electrosim_engine.{_PY_TAG}.pyc")
 

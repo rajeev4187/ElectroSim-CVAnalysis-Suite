@@ -23,3 +23,10 @@ h5py==3.16.0
 # Cloud. kaleido 1.x dropped the bundled browser and needs a system Chrome
 # that Cloud does not provide — pinning to 1.x would break plot exports.
 kaleido==0.2.1
+# Pillow: required by export_style.py for TIFF (LZW, real DPI tags) and
+# JPEG figure export.
+Pillow==12.1.1
+# galvani: optional Biologic EC-Lab .mpr/.mpt parsing in instrument_formats.py.
+# The engine still runs and gives a clear message without it — only
+# .mpr/.mpt uploads need it — but it's small, so it ships here too.
+galvani==0.5.0

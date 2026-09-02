@@ -34,11 +34,15 @@ requirements*.txt
 !web-demo/
 !web-demo/**
 
-# The web demo actually lives at release/web-demo/ — the patterns above are
-# anchored to the repo root, so explicitly re-include the shipped engine
-# bytecode there (one .pyc per supported Python; e.g. cp312/cp313/cp314).
-# Without this, the blanket `*.pyc` rule silently drops new engine files.
+# The web demo actually lives at release/web-demo/ — `!web-demo/**` above
+# does not reach nested paths like this one (a new file there is still
+# blocked by the blanket `*.py`/`*.pyc` rules), so explicitly re-include
+# the loader stubs and the shipped bytecode (one .pyc per supported
+# Python; e.g. cp312/cp313/cp314) at their real, anchored location.
+!release/web-demo/*.py
 !release/web-demo/electrosim_engine.*.pyc
+!release/web-demo/instrument_formats.*.pyc
+!release/web-demo/export_style.*.pyc
 
 # build/ ships the PyInstaller spec files and the build orchestrator PS1
 # for transparency about how the binaries are produced. The blanket `build/`
