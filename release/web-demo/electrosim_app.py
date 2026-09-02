@@ -33,6 +33,7 @@ import marshal
 import os
 import sys
 
+
 # -- Streamlit-run guard ----------------------------------------------------
 # Catch the most common misuse: running the loader with plain `python`
 # instead of `streamlit run`. The engine bytecode calls `st.set_page_config`,
@@ -95,7 +96,7 @@ def _list_available_versions() -> list[str]:
     out = []
     for name in os.listdir(_HERE):
         if name.startswith("electrosim_engine.cp") and name.endswith(".pyc"):
-            tag = name[len("electrosim_engine.") : -len(".pyc")]
+            tag = name[len("electrosim_engine."):-len(".pyc")]
             out.append(tag)
     return sorted(out)
 
@@ -147,11 +148,11 @@ except Exception as exc:
 #      ever calling st.stop().
 #
 # Citation text mirrors ../CITATION.cff — keep the two in sync.
-import streamlit as st
+import streamlit as st  # noqa: E402 — must come after the guard/chdir above
 
-_DATA_TAB_LABEL = "Data Files"  # substring match against the engine's tab labels
-_data_tab = None                # captured DeltaGenerator for that tab
-_cited = False                  # render-once guard (reruns/stop+finally)
+_DATA_TAB_LABEL = "Data Files"  # substring match against the tab labels
+_data_tab = None  # captured DeltaGenerator for that tab
+_cited = False  # render-once guard (reruns/stop+finally)
 
 _APA = (
     "Kumar, R. (2026). *ElectroSim-CV Analysis Suite* (Version 2.1) "
@@ -165,7 +166,8 @@ _BIBTEX = (
     "  version   = {2.1},\n"
     "  year      = {2026},\n"
     "  publisher = {North Carolina Central University},\n"
-    "  url       = {https://github.com/rajeev4187/ElectroSim-CVAnalysis-Suite}\n"
+    "  url       = {https://github.com/rajeev4187/"
+    "ElectroSim-CVAnalysis-Suite}\n"
     "}"
 )
 
@@ -192,7 +194,7 @@ _real_tabs = st.tabs
 
 
 def _tabs_with_citation(labels, *a, **k):
-    """Capture the Data Files tab's container as the engine creates the tabs."""
+    """Capture the Data Files tab's container as the tabs are created."""
     global _data_tab
     result = _real_tabs(labels, *a, **k)
     try:
