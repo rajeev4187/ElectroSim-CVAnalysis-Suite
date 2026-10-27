@@ -22,7 +22,6 @@ authors:
     email: rkumar@nccu.edu
 version: "2.1"
 date-released: "2026-06-07"
-license: "LicenseRef-Proprietary-ElectroSim"
 url: "https://github.com/rajeev4187/ElectroSim-CVAnalysis-Suite"
 repository-code: "https://github.com/rajeev4187/ElectroSim-CVAnalysis-Suite"
 keywords:
